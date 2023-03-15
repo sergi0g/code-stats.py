@@ -55,3 +55,7 @@ You are now ready to use your server!
 All contributions are welcome!
 
 Before opening an issue, make sure you have tested the problem with Python 3.11 and Django 4.1.7 installed, because you might have outdated versions.
+
+#Plugins
+You can find plugins from the official Code::Stats website [here](https://codestats.net/plugins).
+Also I recommend the bash plugin [here](https://github.com/Freed-Wu/code-stats-bash)
