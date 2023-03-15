@@ -29,6 +29,7 @@ Older versions of Django newer than 4.0 will also work.
     ```
 4. Setup the database
     ```
+    python3 manage.py makemigrations api
     python3 manage.py migrate
     python3 manage.py createsuperuser
     ```
