@@ -51,9 +51,16 @@ Older versions of Django newer than 4.0 will also work.
 
 You are now ready to use your server!
 
+# Production environments
+Make sure you set DEBUG=FALSE in settings.py and generate a secure secret key.
+It is recommended to serve this over https
+
+For a complete guide see [this post on realpython.com](https://realpython.com/django-nginx-gunicorn/)
 
 # Contributing
 All contributions are welcome!
+
+[See CONTRIBUTING.md for more details](./CONTRIBUTING.md)
 
 Before opening an issue, make sure you have tested the problem with Python 3.11 and Django 4.1.7 installed, because you might have outdated versions.
 
