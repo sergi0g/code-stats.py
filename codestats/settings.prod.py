@@ -21,14 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.enivron.get("DJANGO_SECRET_KEY", "veryinsecure")
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "veryinsecure")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [os.enivron.get("HOSTNAME", "localhost")]
+ALLOWED_HOSTS = [os.environ.get("HOSTNAME", "localhost")]
 
-CSRF_TRUSTED_ORIGINS = [os.getenv("EXTERNAL_URL", default="http://localhost:8000")]
+CSRF_TRUSTED_ORIGINS = [os.environ.get("EXTERNAL_URL", "http://localhost:8000")]
 
 # Application definition
 
