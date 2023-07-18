@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'codestats.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': '',
+        'NAME': 'codestats',
         'USER': 'codestats',
         'PASSWORD': os.environ.get('MYSQL_PASSWORD', ''),
         'HOST': 'db',
