@@ -86,4 +86,4 @@ def get_language_new_xp(user, language):
     return new_xp
 
 def get_date(date):
-    return datetime.datetime.fromisoformat(date)
+    return datetime.datetime.fromisoformat(str(date))
