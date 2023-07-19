@@ -35,7 +35,7 @@ def users(request, name):
         print(get_machine_new_xp(name, machine.name))
     for language in get_languages(name):
         languages[language] = {"xps":get_language_total_xp(name, language), "new_xps":get_language_new_xp(name, language)}
-    for date in Machine.objects.all().filter(user=name):
+    for date in XPEntry.objects.all().filter(user=name):
         if not get_date(date.date) in dates:
             dates[get_date(date.date)] = date.xp
         else:
