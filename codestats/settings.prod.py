@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +28,8 @@ DEBUG = eval(str(os.environ.get("DJANGO_DEBUG", True)))
 
 ALLOWED_HOSTS = [os.environ.get("HOSTNAME", "localhost")]
 
-CSRF_TRUSTED_ORIGINS = [os.environ.get("EXTERNAL_URL", "http://localhost:8000")]
+CSRF_TRUSTED_ORIGINS = [os.environ.get(
+    "EXTERNAL_URL", "http://localhost:8000")]
 
 # Application definition
 
