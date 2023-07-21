@@ -96,7 +96,7 @@ def check_date(timestamp):
     # timestamp_datetime = timezone.make_aware(timestamp_datetime)
 
     # Get the current datetime
-    current_datetime = datetime.datetime.now()
+    current_datetime = timezone.now()
     print(current_datetime)
 
     # Calculate the difference between the current datetime and the timestamp
