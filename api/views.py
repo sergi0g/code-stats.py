@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http.response import HttpResponse, HttpResponseNotAllowed, JsonResponse
+from django.http.response import HttpResponse, HttpResponseNotAllowed, JsonResponse, HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
 from .models import Machine, XPEntry
 import json
@@ -16,6 +16,9 @@ def pulses(request):
             obj.language = i['language']
             obj.xp = i['xp']
             obj.date = data['coded_at']
+            obj.date = check_date(obj.date)
+            if not obj.date:
+                return HttpResponseBadRequest()
             obj.machine = Machine.objects.all().filter(token=request.headers["X-Api-token"])[0].name
             obj.user = Machine.objects.all().filter(token=request.headers["X-Api-token"])[0].user
             obj.save()
@@ -85,5 +88,33 @@ def get_language_new_xp(user, language):
         new_xp += entry.xp
     return new_xp
 
-def get_date(date):
-    return str(datetime.datetime.fromisoformat(str(date)))
+def check_date(timestamp):
+    # Convert the timestamp string to a datetime object
+    timestamp_datetime = datetime.fromisoformat(timestamp)
+
+    # Get the current datetime
+    current_datetime = datetime.now()
+
+    # Calculate the difference between the current datetime and the timestamp
+    difference = current_datetime - timestamp_datetime
+
+    # Check if the difference is greater than a week (7 days)
+    if difference > datetime.timedelta(days=7):
+        return False
+    else:
+        if timestamp_datetime > current_datetime:
+            return current_datetime
+        else:
+            return timestamp_datetime
+    
+def get_date(timestamp):
+    # Convert the timestamp string to a datetime object
+    timestamp_datetime = datetime.fromisoformat(str(timestamp))
+
+    # Extract the date part from the datetime object
+    date = timestamp_datetime.date()
+
+    # Convert the date object to a string in the desired format
+    date_string = date.strftime("%Y-%m-%d")
+
+    return date_string
