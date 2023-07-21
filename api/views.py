@@ -90,10 +90,10 @@ def get_language_new_xp(user, language):
 
 def check_date(timestamp):
     # Convert the timestamp string to a datetime object
-    timestamp_datetime = datetime.fromisoformat(timestamp)
+    timestamp_datetime = datetime.datetime.fromisoformat(timestamp)
 
     # Get the current datetime
-    current_datetime = datetime.now()
+    current_datetime = datetime.datetime.now()
 
     # Calculate the difference between the current datetime and the timestamp
     difference = current_datetime - timestamp_datetime
@@ -109,7 +109,7 @@ def check_date(timestamp):
     
 def get_date(timestamp):
     # Convert the timestamp string to a datetime object
-    timestamp_datetime = datetime.fromisoformat(str(timestamp))
+    timestamp_datetime = datetime.datetime.fromisoformat(str(timestamp))
 
     # Extract the date part from the datetime object
     date = timestamp_datetime.date()
