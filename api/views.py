@@ -92,7 +92,7 @@ def get_language_new_xp(user, language):
 def check_date(timestamp):
     # Convert the timestamp string to a datetime object
     timestamp_datetime = datetime.datetime.fromisoformat(timestamp)
-    timezone = timezone.make_aware(timestamp_datetime)
+    timestamp_datetime = timezone.make_aware(timestamp_datetime)
 
     # Get the current datetime
     current_datetime = datetime.datetime.now()
