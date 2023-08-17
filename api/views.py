@@ -15,7 +15,7 @@ from .models import Machine, XPEntry
 @csrf_exempt
 def pulses(request):
     data = json.loads(request.body.decode())
-    if len(Machine.objects.all().filter(token=request.headers["X-Api-token"])) > 0:
+    if len(Machine.objects.all().filter(token=request.headers["X-Api-Token"])) > 0:
         for i in data['xps']:
             obj = XPEntry()
             obj.language = i['language']
@@ -25,9 +25,9 @@ def pulses(request):
             if not obj.date:
                 return HttpResponseBadRequest()
             obj.machine = Machine.objects.all().filter(
-                token=request.headers["X-Api-token"])[0].name
+                token=request.headers["X-Api-Token"])[0].name
             obj.user = Machine.objects.all().filter(
-                token=request.headers["X-Api-token"])[0].user
+                token=request.headers["X-Api-Token"])[0].user
             obj.save()
     else:
         return HttpResponseNotAllowed()
